@@ -8,9 +8,7 @@ class BonusDrink
   def self.bonus_count_for(amount)
     return 0 if amount < BASE_OF_BONUS
 
-    quot = amount / BASE_OF_BONUS
-    rem = amount % BASE_OF_BONUS 
-    new_bottole_count = quot
-    new_bottole_count + bonus_count_for(quot + rem)
+    quot, rem = amount.divmod(BASE_OF_BONUS)
+    quot + bonus_count_for(quot + rem)
   end
 end
